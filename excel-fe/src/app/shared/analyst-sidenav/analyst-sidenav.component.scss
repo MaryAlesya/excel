@@ -1,0 +1,57 @@
+.example-container {
+  height: 90vh;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  background-color: white; /* Replace with your desired color */
+  color: #333; /* Optional: Set text color for better contrast */
+  height: 100%; /* Ensure the sidenav takes the full height */
+  padding: 0; /* Remove any default padding */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+/**
+.full-width {
+  width: 100%;
+} **/
+.menu-button {
+  transition: 300ms ease-in-out;
+  transform: rotate(0deg);
+}
+.menu-button.rotated {
+  transform: rotate(180deg);
+}
+/**.submenu {
+  overflow-y: hidden;
+  transition: transform 300ms ease;
+  transform: scaleY(0);
+  transform-origin: top;
+  padding-left: 30px;
+}
+.submenu.expanded {
+  transform: scaleY(1);
+} **/
+
+.submenu {
+  overflow: hidden; /* Prevent extra space when collapsed */
+  height: 0; /* Default height when collapsed */
+  transition: height 0.3s ease; /* Smooth transition for expanding/collapsing */
+  padding-left: 20px;
+}
+
+.submenu.expanded {
+  height: auto; /* Automatically adjust height when expanded */
+}
+
+.logo {
+  height: 40px; /* Adjust the height of the logo */
+  width: auto; /* Maintain aspect ratio */
+  margin-right: 10px; /* Add spacing between the logo and the text */
+  display: inline-block; /* Ensure it aligns properly with the text */
+}

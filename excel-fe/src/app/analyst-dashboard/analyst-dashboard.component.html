@@ -1,0 +1,30 @@
+<div class="dashboard-container">
+    <!-- Sidenav Autosize -->
+    <app-analyst-sidenav></app-analyst-sidenav>
+  
+    <!-- Main Content -->
+    <div class="dashboard-content">
+     <!-- Metrics Section -->
+      <div class="metrics-container">
+        <div class="metric-card">
+          <h3>Total Uploads</h3>
+          <p>{{ totalUploads }}</p>
+        </div>
+        <div class="metric-card">
+          <h3>Last Upload Time</h3>
+          <p>{{ lastUploadTime }}</p>
+        </div>
+      </div>
+  
+      <!-- Download History Chart -->
+      <div class="chart-container">
+        <h2>Download History</h2>
+        <canvas baseChart
+            [data]="downloadHistoryChartData"
+            [labels]="downloadHistoryLabels"
+            [type]="'bar'"
+            [options]="downloadHistoryChartOptions">
+        </canvas>
+      </div>
+    </div>
+  </div>

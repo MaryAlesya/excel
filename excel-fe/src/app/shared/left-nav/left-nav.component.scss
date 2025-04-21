@@ -1,0 +1,77 @@
+.left-panel {
+    width: 10vw;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    transition: width 0.3s ease;
+    height: 85vh;
+  
+    &.collapsed {
+      width: 2vw;
+      padding: 5px;
+    }
+  
+    nav ul {
+      list-style: none;
+      padding: 0;
+  
+      li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+  
+        .material-icons {
+          font-size: 20px;
+          margin-right: 10px;
+          color: #555;
+        }
+  
+        a {
+          text-decoration: none;
+          color: #555;
+          font-weight: normal;
+          white-space: nowrap;
+        }
+  
+        a:hover {
+          text-decoration: underline;
+        }
+  
+        /* Sub-menu styling */
+        .sub-menu {
+          list-style: none;
+          padding-left: 20px; /* Indent sub-menu items */
+          margin-top: 5px;
+  
+          li {
+            margin-bottom: 10px;
+  
+            a {
+              font-weight: normal; /* Make sub-menu items less bold */
+              color: #555;
+            }
+  
+            a:hover {
+              color: #007bff;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .toggle-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .toggle-button:hover {
+    background-color: #0056b3;
+  }

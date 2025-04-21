@@ -1,0 +1,53 @@
+.sales-management-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  app-sidenav-autosize {
+    flex-shrink: 0; /* Prevent the sidenav from shrinking **/
+  } 
+  
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+  
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #007bff;
+    }
+  
+    section {
+      margin-bottom: 40px;
+  
+      h2 {
+        margin-bottom: 10px;
+        color: #333;
+      }
+  
+      .search-field {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+  
+      table {
+        width: 100%;
+      }
+  
+      th.mat-header-cell {
+        background-color: #f4f4f4;
+        color: #333;
+        font-weight: bold;
+      }
+  
+      td.mat-cell {
+        font-size: 14px;
+      }
+  
+      .mat-elevation-z8 {
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+ 

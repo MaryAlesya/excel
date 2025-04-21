@@ -1,0 +1,41 @@
+<!-- Left Panel -->
+<aside class="left-panel" [class.collapsed]="isPanelCollapsed">
+    <button class="toggle-button" (click)="togglePanel()">
+      {{ isPanelCollapsed ? '☰' : '<' }}
+    </button>
+    <ng-template [ngIf]="!isPanelCollapsed">
+      <nav>
+        <ul>
+          <li>
+            <span class="material-icons">group</span>
+            <a routerLink="/user-management">User Management</a>
+          </li>
+          <li>
+            <span class="material-icons">folder</span>
+            <a routerLink="/data-management">Data Management</a>
+            <!-- Sub-menu for Data Management -->
+            <ul class="sub-menu">
+              <li>
+                <a routerLink="/data-management/sales">Sales</a>
+              </li>
+              <li>
+                <a routerLink="/data-management/purchases">Purchases</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </ng-template>
+    <ng-template [ngIf]="isPanelCollapsed">
+      <nav>
+        <ul>
+          <li>
+            <span class="material-icons">group</span>
+          </li>
+          <li>
+            <span class="material-icons">folder</span>
+          </li>
+        </ul>
+      </nav>
+    </ng-template>
+  </aside>

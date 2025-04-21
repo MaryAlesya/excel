@@ -1,0 +1,12 @@
+
+  .form-container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 16px; /* Add spacing between fields */
+    width : 45vw;
+    height: 35vh;;
+  }
+  
+  .full-width {
+    width: 100%; /* Ensure fields take full width */
+  }

@@ -1,0 +1,160 @@
+<div class="sales-management-container">
+  <!-- Sidenav Autosize -->
+  <app-sidenav-autosize></app-sidenav-autosize>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    
+  <!-- Uploads Data Grid -->
+    <section>
+      <h3 class="custom-font">Uploaded Files</h3>
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Search Uploads</mat-label>
+        <input matInput (keyup)="applyUploadsFilter($event)" placeholder="Search uploads">
+      </mat-form-field>
+      <table mat-table [dataSource]="uploadsDataSource" matSort class="mat-elevation-z8 custom-table" #salesAdminUpSort="matSort">
+      <!-- ID Column (Hidden) -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="display: none;">ID</th>
+          <td mat-cell *matCellDef="let upload" style="display: none;">{{ upload.id }}</td>
+        </ng-container>
+
+        <!-- File Name Column -->
+        <ng-container matColumnDef="originalFileName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>File Name</th>
+          <td mat-cell *matCellDef="let upload">
+            <a href="javascript:void(0)" (click)="downloadFile(upload.id, upload.originalFileName)">
+              {{ upload.originalFileName }}
+            </a>
+          </td>
+        </ng-container>
+
+        <!-- Type Column -->
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+          <td mat-cell *matCellDef="let upload">{{ upload.type }}</td>
+        </ng-container>
+
+        <!-- Uploaded By Column -->
+        <ng-container matColumnDef="uploadedBy">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Uploaded By</th>
+          <td mat-cell *matCellDef="let upload">{{ upload.uploadedBy.email }}</td>
+        </ng-container>
+
+        <!-- Uploaded On Column -->
+        <ng-container matColumnDef="uploadedOn">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Uploaded On</th>
+          <td mat-cell *matCellDef="let upload">{{ upload.uploadedOn | date:'short' }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="uploadsDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: uploadsDisplayedColumns;"></tr>
+      </table>
+      <mat-paginator #uploadsPaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </section>
+
+    <!-- Sales Data Grid -->
+    <section>
+      <h3 class="custom-font">Sales Data</h3>
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Search Sales</mat-label>
+        <input matInput (keyup)="applySalesFilter($event)" placeholder="Search sales">
+      </mat-form-field>
+       <!-- Button Container -->
+      <div class="button-container">
+        <button mat-raised-button color="primary" (click)="exportSalesData()">Export to Excel</button>
+      </div>
+      <div class="table-container">
+      <table mat-table [dataSource]="salesDataSource" matSort class="mat-elevation-z8 custom-table" #salesDataSort="matSort">
+       <!-- ID Column (Hidden) -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="display: none;">ID</th>
+          <td mat-cell *matCellDef="let sale" style="display: none;">{{ sale.id }}</td>
+        </ng-container>
+
+        <!-- Product Column -->
+        <ng-container matColumnDef="item">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Item</th>
+          <td mat-cell *matCellDef="let sale">{{ sale.item }}</td>
+        </ng-container>
+        <!-- Date Column -->
+        <ng-container matColumnDef="value1">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Value1</th>
+          <td mat-cell *matCellDef="let sale">{{ sale.value1 }}</td>
+        </ng-container>
+        <!-- Date Column -->
+        <ng-container matColumnDef="value2">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Value2</th>
+          <td mat-cell *matCellDef="let sale">{{ sale.value2 }}</td>
+        </ng-container>
+        <!-- Date Column -->
+        <ng-container matColumnDef="value3">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Value3</th>
+          <td mat-cell *matCellDef="let sale">{{ sale.value3 }}</td>
+        </ng-container>
+
+        <!-- Editable total Column -->
+      <ng-container matColumnDef="total">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Total</th>
+          <td mat-cell *matCellDef="let sale">
+            <mat-form-field appearance="standard">
+              <input matInput 
+              [(ngModel)]="sale.total"
+               type="number" 
+               (change)="onTotalChange(sale)"
+               [value]="sale.total ? sale.total.toFixed(2) : '0.00'">
+            </mat-form-field>
+          </td>
+        </ng-container>
+
+        <!-- Editable Average Column -->
+        <ng-container matColumnDef="average">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Average</th>
+          <td mat-cell *matCellDef="let sale">
+            <mat-form-field appearance="standard">
+              <input
+                matInput
+                [(ngModel)]="sale.average"
+                type="number"
+                (change)="onAverageChange(sale)"
+                [value]="sale.average ? sale.average.toFixed(2) : '0.00'"
+              />
+            </mat-form-field>
+          </td>
+        </ng-container>
+        <!-- Editable score column -->
+        <ng-container matColumnDef="score">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Score</th>
+          <td mat-cell *matCellDef="let sale">
+            <mat-form-field appearance="standard">
+              <mat-select [(ngModel)]="sale.score" (selectionChange)="onScoreChange(sale)">
+                <mat-option *ngFor="let option of scoreOptions" [value]="option">
+                  {{ option }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </ng-container>
+      <!-- Date Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+          <td mat-cell *matCellDef="let sale">{{ sale.date | date:'short' }}</td>
+        </ng-container>
+      <!-- Update Button Column -->
+      <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let sale">
+          <button mat-icon-button color="primary" (click)="onUpdateRow(sale)">
+              <mat-icon>save</mat-icon>
+          </button>
+          </td>
+      </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="salesDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: salesDisplayedColumns;"></tr>
+      </table>
+    </div>
+      <mat-paginator #salesPaginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </section>
+  </div>
+</div>

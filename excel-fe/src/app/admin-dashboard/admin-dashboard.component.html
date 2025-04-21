@@ -1,0 +1,77 @@
+<div class="dashboard-container">
+ 
+  <app-sidenav-autosize></app-sidenav-autosize>
+  <!-- Main Content -->
+  <main class="main-content">
+   
+    <section class="metrics">
+     
+      <div class="chart-container">
+        <div>
+          <h3 class="custom-font">User Statistics</h3>
+          <canvas baseChart
+                  [data]="barChartData"
+                  [type]="'bar'"
+                  [options]="chartOptions">
+          </canvas>
+        </div>
+        <div>
+          <h3 class="custom-font">Uploads</h3>
+          <canvas baseChart
+                  [data]="pieChartData"
+                  [type]="'pie'"
+                  [options]="chartOptions">
+          </canvas>
+        </div>
+       
+      </div>
+    </section>
+    <section class="metrics">
+     
+      <div class="chart-container">
+        <div>
+          <h3 class="custom-font">CPU Usage</h3>
+          <canvas baseChart
+                  [data]="cpuUsageChartData"
+                  [type]="'doughnut'"
+                  [options]="chartOptions">
+          </canvas>
+        </div>
+        <div>
+          <h3 class="custom-font">Memory Usage</h3>
+          <canvas baseChart
+                  [data]="memoryUsageChartData"
+                  [type]="'doughnut'"
+                  [options]="chartOptions">
+          </canvas>
+        </div>
+       
+      </div>
+    </section>
+    <section class="user-activity">
+      <h3 class="custom-font">User Activity Logs</h3>
+      <table mat-table [dataSource]="userActivityDataSource" class="mat-elevation-z8 custom-table">
+        <!-- Column Definitions -->
+        <ng-container matColumnDef="username">
+          <th mat-header-cell *matHeaderCellDef> Username </th>
+          <td mat-cell *matCellDef="let log"> {{ log.userName }} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let log"> {{ log.action }} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="timestamp">
+          <th mat-header-cell *matHeaderCellDef> Timestamp </th>
+          <td mat-cell *matCellDef="let log"> {{ log.actionedOn | date:'short' }} </td>
+        </ng-container>
+    
+        <!-- Header and Row Definitions -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </section>
+    
+  </main>
+</div>

@@ -1,0 +1,189 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: 'Material Icons';
+    src: url('/assets/fonts/MaterialIcons-Regular.woff2') format('woff2');
+  }
+  
+  @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling on the body */
+    height: 100%; /* Ensure the body takes up the full height */
+  }
+  .basic-container {
+    padding: 5px;
+  }
+  
+  .version-info {
+    font-size: 8pt;
+    float: right;
+  }
+  
+  .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+.center-note {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #f0f0f0; /* Light gray background */
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Main Content Styling */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+  
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  
+    section {
+      margin-bottom: 30px;
+  
+      h2 {
+        margin-bottom: 10px;
+        color: #007bff;
+      }
+  
+      .chart-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap; /* Allow charts to wrap to the next line if needed */
+        gap: 20px; /* Add spacing between charts */
+      }
+  
+      canvas {
+        max-width: 100%; /* Ensure the canvas does not exceed its container width */
+        height: 20vh; /* Set a fixed height for the charts */
+        width: 20vw; /* Set a fixed width for the charts */
+      }
+    }
+  }
+
+  .mat-column-id {
+    flex: 0 0 50px; /* Fixed width for ID column */
+  }
+  
+  .mat-column-item {
+    flex: 1; /* Flexible width for Item column */
+  }
+  
+  .mat-column-value1,
+  .mat-column-value2,
+  .mat-column-value3 {
+    flex: 0 0 100px; /* Fixed width for Value columns */
+  }
+  
+  .mat-column-total,
+  .mat-column-average,
+  .mat-column-score {
+    flex: 0 0 80px; /* Fixed width for Total, Average, and Score columns */
+  }
+  
+  .mat-column-date {
+    flex: 0 0 100px; /* Fixed width for Date column */
+  }
+  
+  .mat-column-actions {
+    flex: 0 0 80px; /* Fixed width for Actions column */
+  }
+
+  /* Add horizontal scrolling for smaller screens */
+  .table-container {
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  }
+
+  .mat-column-item {
+    min-width: 100px;
+    max-width: 200px;
+  }
+  
+  .mat-column-date {
+    min-width: 120px;
+    max-width: 200px;
+  }
+
+  .mat-cell, .mat-header-cell {
+    white-space: normal; /* Allow text to wrap */
+    word-wrap: break-word; /* Break long words */
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns the button to the right */
+    margin-bottom: 10px; /* Adds spacing below the button */
+  }
+
+  .custom-table {
+    background-color: #e9ecef !important; /* Light gray background for the table */
+    color: #333; /* Text color */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Prevent content overflow */
+  }
+  
+  .custom-table th {
+    background-color: #d9d9da !important; /* light grey for header */
+    color:  #333;/* White text for header */
+    font-weight: bold;
+  }
+  
+  .custom-table td {
+    background-color: #e9ecef !important; /* White background for table cells */
+    color: #333; /* Text color for table cells */
+  }
+  
+  .custom-table tr:hover {
+    background-color: #e9ecef; /* Light gray background on hover */
+  }
+  .form-container {
+    display: flex;
+    justify-content: center; /* Horizontally center the form */
+    align-items: center; /* Vertically center the form */
+    height: 100vh; /* Full viewport height */
+  
+  }
+  form {
+    width: 30vw;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+
+  .custom-font{
+    font-weight : bold;
+    color: mediumblue;
+  }
+
+  .error-message {
+    color: red;
+    font-weight: 500;
+    margin-top: 10px;
+  }
