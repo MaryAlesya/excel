@@ -1,0 +1,25 @@
+<div class="python-integration-container"> 
+ <!-- Analyst Sidenav -->
+ <app-analyst-sidenav></app-analyst-sidenav>
+  
+ <!-- Main Content -->
+<div class="main-content">
+<h2>Run Python Script</h2> 
+    <input type="text" [(ngModel)]="message" placeholder="Enter message" /> 
+    <button (click)="runScript()">Run Script</button> 
+    <div *ngIf="response"> 
+        <h4>Server Response:</h4> 
+        <pre>{{ response | json }}</pre> 
+    </div> 
+    <div class="upload-container"> 
+        <h2>Upload File</h2>
+        <input type="file" (change)="onFileSelected($event)" />
+        
+        <button (click)="onSubmit()" [disabled]="!selectedFile">Submit</button>
+        
+        <div *ngIf="uploadProgress > 0"> Upload Progress: {{ uploadProgress }}% </div> 
+        <div *ngIf="message"> <p>{{ message }}</p> 
+        </div> 
+    </div>
+</div>
+</div>

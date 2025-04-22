@@ -58,6 +58,7 @@ import { DownloadService } from './shared/services/download.service';
 import { UserService } from './shared/services/user.service';
 import { DataGridComponent } from './shared/data-grid/data-grid.component';
 import { EditUserModalComponent } from './edit-user-modal/edit-user-modal.component';
+import { PythonIntegrationComponent } from './python-integration/python-integration.component';
 //import { PurchaseManagementComponent } from './purchase-management/purchase-management.component';
 
 
@@ -83,6 +84,11 @@ const routes: Routes = [
   }, // Add this route
   { path: 'purchases', 
     component: PurchaseManagementComponent,
+    canActivate: [RoleGuard],
+    data: { role: 'ROLE_Admin' } 
+  },
+  { path: 'python-integration', 
+    component: PythonIntegrationComponent,
     canActivate: [RoleGuard],
     data: { role: 'ROLE_Admin' } 
   },
@@ -121,7 +127,8 @@ const routes: Routes = [
     AnalystSalesComponent,
     AnalystPurchaseComponent,
     DataGridComponent,
-    EditUserModalComponent
+    EditUserModalComponent,
+    PythonIntegrationComponent
   ],
   imports: [
     HttpClientModule,
